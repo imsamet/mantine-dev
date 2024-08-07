@@ -1,6 +1,6 @@
 import Heading from '@/components/elements/heading';
 import Paragraph from '@/components/elements/paragraph';
-import SigninForm from '@/components/forms/signin';
+import LoginForm from '@/components/forms/login';
 import Image from 'next/image';
 
 export default function Home() {
@@ -22,8 +22,8 @@ export default function Home() {
       </div>
       <div className="col-span-2">
         <div className="login-card bg-white gap-9">
-          <Heading type="h2">Sign In</Heading>
-          <SigninForm />
+          <Heading type="h2">Login</Heading>
+          <LoginForm />
         </div>
       </div>
     </div>

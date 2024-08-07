@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import cn from 'classnames';
-import { createTheme, MantineProvider } from '@mantine/core';
 
 import '@mantine/core/styles.css';
 import '../styles/global.css';
+import { Providers } from './providers';
+import Controller from '@/components/controller';
 
 const inter = Inter({ subsets: ['latin'] });
-
-const theme = createTheme({});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,9 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <MantineProvider theme={theme}>
-        <body className={cn(inter.className, 'bg-soft-grey')}>{children}</body>
-      </MantineProvider>
+      <body className={cn(inter.className, 'bg-soft-grey')}>
+        <Providers>
+          <>
+            {children}
+            <Controller />
+          </>
+        </Providers>
+      </body>
     </html>
   );
 }

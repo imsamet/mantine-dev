@@ -6,32 +6,36 @@ import Input from '@/components/elements/input';
 import Paragraph from '@/components/elements/paragraph';
 import Password from '@/components/elements/password';
 import Link from 'next/link';
-import { LoginModel } from './_model';
+import { SigninModel } from './_model';
 import login from '@/store/actions/auth/login';
 import { useDispatch } from '@/hooks/useRedux';
 
-const LoginForm: React.FC = () => {
+const SigninForm: React.FC = () => {
   const dispatch = useDispatch();
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Enter valid email').required('Required email'),
     password: Yup.string().required('Required password'),
   });
-  const initialValues: LoginModel = {
+  const initialValues: SigninModel = {
+    name: '',
     email: 'yunus@test.com',
     password: 'yunus',
+    confirmPassword: 'yunus',
   };
-  const handleSubmit = (values: LoginModel) => {
-    dispatch(
-      login({
-        userName: values.email,
-        password: values.password,
-      }),
-    );
-  };
+  const handleSubmit = (values: SigninModel) => {};
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
       {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
         <Form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <Input
+            placeholder="Name"
+            className="w-96"
+            name="name"
+            value={values.name}
+            error={errors.name}
+            onChange={handleChange('name')}
+            onBlur={handleBlur('name')}
+          />
           <Input
             placeholder="Email"
             className="w-96"
@@ -50,11 +54,20 @@ const LoginForm: React.FC = () => {
             onChange={handleChange('password')}
             onBlur={handleBlur('password')}
           />
-          <Button type="submit" label="Login" />
+          <Password
+            placeholder="Password"
+            className="w-96"
+            name="confirmPassword"
+            value={values.confirmPassword}
+            error={errors.confirmPassword}
+            onChange={handleChange('confirmPassword')}
+            onBlur={handleBlur('confirmPassword')}
+          />
+          <Button type="submit" label="Create Account" />
           <Paragraph className="text-center">
-            Don't have an account?{' '}
-            <Link className="text-primary hover:text-primary-active" href="/sign-in">
-              Create account
+            Already have an Account?{' '}
+            <Link className="text-primary hover:text-primary-active" href="/login">
+              Login
             </Link>
           </Paragraph>
         </Form>
@@ -62,4 +75,4 @@ const LoginForm: React.FC = () => {
     </Formik>
   );
 };
-export default LoginForm;
+export default SigninForm;
