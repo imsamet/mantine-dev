@@ -1,16 +1,12 @@
-@import '_variables.css';
-@import '_grid-system.css';
-@import '_theme.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '_theme.css';
+@import '_components.css';
 
 html,
 body,
 * {
   padding: 0;
   margin: 0;
-}
-:root {
-  scroll-padding: 0;
 }

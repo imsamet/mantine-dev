@@ -1,0 +1,4 @@
+/* Login */
+.login-card {
+  @apply flex flex-col justify-center items-center min-h-screen px-8;
+}
