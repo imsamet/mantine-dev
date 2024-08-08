@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './reducer/authSlice';
 import appReducer from './reducer/appSlice';
+import blackListReducer from './reducer/listSlice';
 import loadingMiddleware from './middleware/loadingMiddleware';
 
 const persistConfig = {
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   app: appReducer,
   auth: authReducer,
+  blackList: blackListReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

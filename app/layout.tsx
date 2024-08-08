@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'bg-soft-grey')}>
+      <body className={cn(inter.className)}>
         <Providers>
           {children}
           <Controller />

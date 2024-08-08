@@ -13,7 +13,7 @@ type Props = {
 const AuthLayout: React.FC<Props> = ({ title, description, label, image, children }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5">
-      <div className="col-span-3">
+      <div className="col-span-3 bg-soft-grey">
         <div className="login-card gap-[70px]">
           <div className="max-w-80 w-full aspect-square relative">
             <Image src={image} layout="fill" objectFit="cover" alt="login" />
