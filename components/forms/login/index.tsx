@@ -9,9 +9,11 @@ import Link from 'next/link';
 import { LoginModel } from './_model';
 import login from '@/store/actions/auth/login';
 import { useDispatch } from '@/hooks/useRedux';
+import { useRouter } from 'next/navigation';
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
+  const route = useRouter();
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Enter valid email').required('Required email'),
     password: Yup.string().required('Required password'),
@@ -20,13 +22,16 @@ const LoginForm: React.FC = () => {
     email: 'yunus@test.com',
     password: 'yunus',
   };
-  const handleSubmit = (values: LoginModel) => {
-    dispatch(
-      login({
-        userName: values.email,
-        password: values.password,
-      }),
-    );
+  const handleSubmit = async (values: LoginModel) => {
+    try {
+      await dispatch(
+        login({
+          userName: values.email,
+          password: values.password,
+        }),
+      );
+      route.push('/');
+    } catch (error) {}
   };
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>

@@ -23,10 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, 'bg-soft-grey')}>
         <Providers>
-          <>
-            {children}
-            <Controller />
-          </>
+          {children}
+          <Controller />
         </Providers>
       </body>
     </html>

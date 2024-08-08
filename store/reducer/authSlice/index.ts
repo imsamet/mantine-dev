@@ -12,6 +12,9 @@ export const userSlice = createSlice({
     setSession: (state, action: PayloadAction<string>) => {
       state.session = action.payload;
     },
+    logout: state => {
+      state.session = null;
+    },
   },
   extraReducers: builder => {
     builder.addCase(login.fulfilled, (state, action: PayloadAction<string>) => {
@@ -20,5 +23,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setSession } = userSlice.actions;
+export const { setSession, logout } = userSlice.actions;
 export default userSlice.reducer;
