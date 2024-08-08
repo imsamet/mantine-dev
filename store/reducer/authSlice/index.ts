@@ -1,3 +1,4 @@
+'use client';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AuthModel } from './_model';
 import login from '@/store/actions/auth/login';

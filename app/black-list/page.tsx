@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 export default function Home() {
   const [opened, { open, close }] = useDisclosure(false);
   const dispatch = useDispatch();
-  const { blackList } = useSelector(state => state.blackList);
+  const { blackList } = useSelector(state => state.list);
   useEffect(() => {
     dispatch(
       getBlackList({
@@ -21,7 +21,7 @@ export default function Home() {
         Adi: 'ALL?',
       }),
     );
-  }, []);
+  }, [dispatch]);
   const tableData = {
     head: {
       name: 'Ad',

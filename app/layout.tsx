@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import '@mantine/core/styles.css';
 import '../styles/global.css';
-import { Providers } from './providers';
+import { Providers } from '@/components/providers';
 import Controller from '@/components/controller';
 
 const inter = Inter({ subsets: ['latin'] });

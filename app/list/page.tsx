@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { list } = useSelector(state => state.blackList);
+  const { list } = useSelector(state => state.list);
   useEffect(() => {
     dispatch(
       getList({
@@ -37,7 +37,7 @@ export default function Home() {
         cev_01: null,
       }),
     );
-  }, []);
+  }, [dispatch]);
   const tableData = {
     head: {
       date: 'Tarih',

@@ -14,7 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   app: appReducer,
   auth: authReducer,
-  blackList: blackListReducer,
+  list: blackListReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

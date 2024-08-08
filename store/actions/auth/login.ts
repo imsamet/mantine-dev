@@ -1,3 +1,4 @@
+'use client';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchLogin } from './core/_request';
 import { LoginModel } from './core/_model';

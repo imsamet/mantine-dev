@@ -57,7 +57,7 @@ const LoginForm: React.FC = () => {
           />
           <Button type="submit" label="Login" />
           <Paragraph className="text-center">
-            Don't have an account?{' '}
+            {"Don't have an account? "}
             <Link className="text-primary hover:text-primary-active" href="/sign-in">
               Create account
             </Link>

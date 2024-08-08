@@ -16,6 +16,11 @@ const axiosAuthInstance = axios.create({
 axiosInstance.defaults.headers.common['Content-Type'] = 'application/json';
 axiosAuthInstance.defaults.headers.common['Content-Type'] = 'application/json';
 
-axiosInstance.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('token')}`;
+if (typeof window !== 'undefined') {
+  const token = localStorage.getItem('token');
+  if (token) {
+    axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  }
+}
 
 export { axiosInstance, axiosAuthInstance };
