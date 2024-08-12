@@ -16,11 +16,19 @@ const axiosAuthInstance = axios.create({
 axiosInstance.defaults.headers.common['Content-Type'] = 'application/json';
 axiosAuthInstance.defaults.headers.common['Content-Type'] = 'application/json';
 
-if (typeof window !== 'undefined') {
-  const token = localStorage.getItem('token');
-  if (token) {
-    axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
-  }
-}
+axiosInstance.interceptors.request.use(
+  config => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  },
+);
 
 export { axiosInstance, axiosAuthInstance };
